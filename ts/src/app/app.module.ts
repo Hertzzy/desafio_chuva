@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Importe o FormsModule
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
-    BrowserModule
+    [BrowserModule, FormsModule],
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
