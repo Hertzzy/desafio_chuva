@@ -1,46 +1,31 @@
-import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
 
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  });
 
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
-export class AppComponent {
-  title = 'DevChuva';
+  it(`should have as title 'ts'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('ts');
+  });
 
-
-  visibleParagraph: string = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim sum dolor sit amet consectetur...';
-  hiddenParagraphs: string[] = [
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim',
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim',
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim doloremque, voluptatibus obcaecati, dicta alias voluptatum expedita delectus. Illum, consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsum doloribus natus! Consectetur distinctio, ducimus tenetur dolorem sunt voluptas enim'
-  ];
-  showHiddenParagraphs: boolean = false;
-
-  toggleHiddenParagraphs() {
-    this.showHiddenParagraphs = !this.showHiddenParagraphs;
-  }
-
-  showForm: boolean = false;
-  assunto: string = '';
-  conteudo: string = '';
-
-  toggleFormVisibility() {
-    this.showForm = !this.showForm;
-    this.clearForm();
-  }
-    clearForm() {
-      this.assunto = '';
-      this.conteudo = '';
-    }
-    submitTopic() {
-      // Lógica para enviar o tópico aqui
-      console.log('Assunto:', this.assunto);
-      console.log('Conteúdo:', this.conteudo);
-      this.toggleFormVisibility();
-    }
-}
-
-
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.content span')?.textContent).toContain('ts app is running!');
+  });
+});
